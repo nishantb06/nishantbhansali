@@ -2,3 +2,20 @@ baseURL = 'https://nishantb06.github.io/'
 languageCode = 'en-us'
 title = 'Nishant Bhansali'
 theme = "hyde"
+
+[Menus]
+  main = [
+      {Name = "Github", URL = "https://github.com/nishantb06/"},
+      {Name = "LinkedIn", URL = "https://www.linkedin.com/in/nishantbhansali/"},
+      {Name = "Twitter", URL = "https://twitter.com/itsnishant14"},
+  ]
+
+[params]
+  description = "Currently resolving CUDA out of memory error"
+  layoutReverse = false
+
+[frontmatter]
+  date = ['date', 'publishDate', 'lastmod']
+  expiryDate = ['expiryDate']
+  lastmod = [':git', 'lastmod', 'date', 'publishDate']
+  publishDate = ['publishDate', 'date']
