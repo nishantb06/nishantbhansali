@@ -14,8 +14,3 @@ theme = "hyde"
   description = "Currently resolving CUDA out of memory error"
   layoutReverse = false
 
-[frontmatter]
-  date = ['date', 'publishDate', 'lastmod']
-  expiryDate = ['expiryDate']
-  lastmod = [':git', 'lastmod', 'date', 'publishDate']
-  publishDate = ['publishDate', 'date']
