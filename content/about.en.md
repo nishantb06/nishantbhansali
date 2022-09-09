@@ -3,10 +3,6 @@ title: "About Me"
 date: 2021-10-31T21:25:02+01:00
 draft: false
 menu: "main"
-cover: 
-    image: img/me.JPEG
-    alt: 'me in a suit'
-    caption: 'me aption'
 ---
 ![me](https://o.remove.bg/uploads/cb9eea24-cf8c-497e-a575-debb6710019f/me.jpeg)
 

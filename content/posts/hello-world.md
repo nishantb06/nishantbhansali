@@ -17,7 +17,7 @@ to deploy changes to original website use
 
 - go to [this](https://www.remove.bg/upload) site. Upload your image there. right click and copy its image url
 
-- hyde documentation
+- hyde documentation - https://themes.gohugo.io/themes/hyde/
 - https://blog.hellohuigong.com/en/posts/how-to-build-personal-blog-with-github-pages-and-hugo/ 
 
 ![test image with link](https://imgs.search.brave.com/4RmOOOTM0uWDe6eXxblKpb_CNTcUnlxl43AhhZuWkMs/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5N/OUFzWjdTbTZRcS1M/WHBZOTJUdDJBSGFF/SyZwaWQ9QXBp)
