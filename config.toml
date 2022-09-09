@@ -8,6 +8,7 @@ theme = "hyde"
       {Name = "Github", URL = "https://github.com/nishantb06/"},
       {Name = "LinkedIn", URL = "https://www.linkedin.com/in/nishantbhansali/"},
       {Name = "Twitter", URL = "https://twitter.com/itsnishant14"},
+      {Name = "Kaggle", URL = "https://www.kaggle.com/nishantbhansali"},
   ]
 
 [params]
