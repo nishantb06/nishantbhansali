@@ -12,5 +12,5 @@ theme = "hyde"
 
 [params]
   description = "Currently resolving CUDA out of memory error"
-  layoutReverse = false
+
 
