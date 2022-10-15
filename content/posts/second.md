@@ -38,3 +38,6 @@ draft: false
     > transformers on GPUs**, which are used out-of-the-box in ViTs to improve their scalability and efficiency on GPUs (e.g., Shoeybi et al., 2019; Lepikhin et al., 2021). Second, CNNs benefit from several device-level optimisations, including batch normalisation fusion with convolutional layers (Jacob et al., 2018). These optimisations improve latency and memory access. However, such dedicated and optimised operations for transformers are currently not available for mobile devices
     > 
 5. They haven’t used positional embedding in their transformer layers
+
+### Fun Fact 
+- Layer Norms are used in transformer models because the batch size has to be kept too small because of the large size of transformer models. Batch size has to be kept extremly low (i have myself used 2 or 4 as batch-size),and as batch_norm us not that effective when batch size is so low. We use learning rate warmup for the same reason 
