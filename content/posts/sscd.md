@@ -1,5 +1,5 @@
 ---
-title: "Sscd"
+title: "A Self-Supervised Descriptor for Image Copy Detection - Review"
 date: 2023-01-13T07:40:39+05:30
 draft: true
 ---
