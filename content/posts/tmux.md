@@ -42,10 +42,13 @@ Creating and managing terminals . Below commands are for the root terminal
 These commands are for navigating your way through when you are inside an active tmux session
 
 - `Cntrl + b` - This is prefix for any tmux terminal command
-- `Cntrl + b` + % Split panes horizontally
+- `Cntrl + b` + `%` Split panes horizontally
 - `Cntrl + b` + `—->`, `<-—` switch between right and left panes
 - `Cntrl + b` + `[` to enter scrolling mode, `q` to quit
 - `Cntrl + b`  + `d` Detach the terminal
 - `Cntrl + b`  + `c`  New terminal instance
 - `Cntrl + b` + `space` cycle through the terminal instances
 - `Cntrl + b` + `p` or `n` previous or next terminal instance
+- `Cntrl + b` + `x` kill current pane
+
+A more extensive Cheatsheet can be found [here](https://tmuxcheatsheet.com/)
