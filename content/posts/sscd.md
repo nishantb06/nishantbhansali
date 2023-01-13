@@ -1,4 +1,10 @@
-# **A Self-Supervised Descriptor for Image Copy Detection - Review**
+---
+title: "Sscd"
+date: 2023-01-13T07:40:39+05:30
+draft: true
+---
+
+# A Self-Supervised Descriptor for Image Copy Detection - Review
 
 [[Paper](https://arxiv.org/abs/2202.10261)][[Code](https://github.com/facebookresearch/sscd-copy-detection)]
 
