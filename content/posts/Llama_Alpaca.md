@@ -10,37 +10,37 @@ Welcome to “**The Annotated LLaMA**”.
 
 One of the most brilliant and well-explained articles I have read is [The Annotated Transformer](https://nlp.seas.harvard.edu/2018/04/03/attention.html) and the [Annotated DETR](https://amaarora.github.io/posts/2021-07-26-annotateddetr.html). It introduced **Attention** like no other post. The simple idea was to present an “annotated” version of the paper [Attention is all you need](https://arxiv.org/abs/1706.03762) along with code.
 
-I have tried to do something similar with the LLaMA models without which the commercial use of many Large Language models would not have been possible. 
+I have tried to do something similar with the LLaMA models by Meta Research, without which the commercial use of many Large Language models would not have been possible. 
 
-[arXiv](https://arxiv.org/abs/2302.13971v1) [Official Code](https://github.com/facebookresearch/llama)
+[arXiv](https://arxiv.org/abs/2302.13971v1) , [Official Code](https://github.com/facebookresearch/llama)
 
 # Introduction
 
 Before Llama came there were a series of really good Large Language Models (LLM’s) like Chinchilla, PaLM and GPT-3, only problem they were trained on proprietory data and were not accessible to the public for research or commercial use. 
 
-On February 27, 2023 . Facebook released a set of models called as LLaMA models that were 
+On February 27, 2023 . Facebook released a set of models called as LLaMA models that had 
 
 1. Perfomance comparable to State-of-the-art LLM models at that time
 2. Trained entirely on Publicly available data.
 3. Sizes as small as 7B parameter to as Large as 65B parameters
-4. Models were available publicly for research purposes only (Not for Commercial Use). Though these models were leaked later.
+4. **Models were available publicly for research purposes** only (Not for Commercial Use). Though these models were leaked later.
 5. Inference Code was Open sourced , (not the training code 😓)
 
 With these models, they prove that 
 
-1. It is possible to train SOTA LLM’s without the use propprietary and inaccessible datasets, like ??
+1. It is possible to **train SOTA LLM’s without the use propprietary and inaccessible datasets**.
 2. The perfomance of a model as small as 7B parameters will keep on increasing as with the size of the dataset it is trained on. 
     
-    > For instance, although [Hoffmann et al. (2022)](https://arxiv.org/abs/2203.15556) recommends training a 10B model on 200B tokens, we find that the performance of a 7B model continues to improve even after 1T tokens.
+    > For instance, although [Hoffmann et al. (2022)](https://arxiv.org/abs/2203.15556) recommends training a 10B model on 200B tokens, we find that the **performance of a 7B model continues to improve even after 1T tokens.**
     > 
-3. They wanted to train and optimise a set of models for best possible perfomance at fixed Inference budgets, by training on more tokens than what is typically used
+3. They wanted to train and optimise a set of models for **best possible perfomance at fixed Inference budgets,** by training on more tokens than what is typically used
 
 ## LLM Scaling Law’s
 
-Before you dive into training, it’s important to cover how LLMs scale. Understanding scaling lets you effectively balance the size and complexity of your model and the size of the data you’ll use
+Before we dive into training, it’s important to cover how LLMs scale. Understanding scaling lets us effectively balance the size and complexity of your model and the size of the data you’ll use
 to train it.
 
-Some relevant history here: OpenAI originally introduced “the LLM scaling laws” in 2020. They suggested that increasing model size was more important than scaling data size. This held for about two years before DeepMind suggested almost the polar opposite: that previous models were significantly undertrained and that increasing your foundational training datasets actually
+Some relevant history here: OpenAI originally introduced “the LLM scaling laws” in 2020. They **suggested that increasing model size was more important than scaling data size**. This held for about two years before DeepMind suggested almost the polar opposite: that **previous models were significantly undertrained** and that increasing your foundational training datasets actually
 leads to better performance.
 
 That changed in 2022. Specifically, DeepMind put forward an alternative approach in their Training Compute-Optimal Large Language Models paper. They found that **current LLMs
@@ -49,27 +49,27 @@ are actually significantly undertrained**. Put simply: these large models weren�
 Deepmind showcased this with a model called Chinchilla, which is a fourth the size of the Gopher model above but trained on 4.6x more data. At that reduced size but with far more training
 data, Chinchilla outperformed Gopher and other LLMs.
 
-DeepMind claims that **the model size and the number of training tokens* should instead increase at roughly the same rate to achieve optimal performance.** If you get a 10x increase
+DeepMind claims that **the model size and the number of training tokens should instead increase at roughly the same rate to achieve optimal performance.** If you get a 10x increase
 in compute, you should make your model 3.1x times bigger and the data you train over 3.1x bigger; if you get a 100x increase in compute, you should make your model 10x bigger and your data 10x bigger.
 
-# Datasets Used
+## Datasets Used
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/cae1a4ba-4a8c-4d13-96e8-4e50f828a81b/Untitled.png)
+![Datasets used](https://o.remove.bg/uploads/9c7ebf59-2220-46e8-a396-9f03c3cd0fe7/datasets.png)
 
 These datasets were used for Pretraining of the model, Note that Wikipedia and Books dataset were used in approximately 2 epochs, while other dataset had only 1 epochs. Overall this datasets is of 4.3 TB!!
 
 In short they have trained a large transformer on a large quantity of daya using standard optimizer (AdamW).
 
-### Architecture
+## Architecture
 
-Major changes to the Architecture were 
+Major changes to the Transformer Architecture were 
 
 1. Using RMSNorm instead of LayerNorm 
 2. Using Rotary Postional Embeddings (which are relative and not absolute)
 3. Caching of keys and values during the attention Mechanism
 4. SwiGLU activation function
 
-## How to download the Weights on your Machine
+# How to download the Weights on your Machine
 
 Till now the easiest way I have found to download the weights on your machine is using the [pyllama](https://github.com/juncongmoo/pyllama) package. Steps involved in doing so are 
 
@@ -108,11 +108,11 @@ Till now the easiest way I have found to download the weights on your machine is
     
 4. After successful download the directory will have the following structure 
     
-    ![Note that the size of this folder is **13 GB** !!!](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/82e3f3e8-e0c9-4be3-bb29-6c73a5112182/Untitled.png)
+    ![Note that the size of this folder is **13 GB** !!!](https://o.remove.bg/uploads/934d3409-6584-4f4f-a046-60e2af34e57f/weights1.png)
     
     Note that the size of this folder is **13 GB** !!!
     
-    ![This is what the logs of a Successulf download will look like!](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/036d78e1-a44e-45af-a59b-3e7d22c2ad2f/Untitled.png)
+    ![This is what the logs of a Successulf download will look like!](https://o.remove.bg/uploads/f074333a-a784-447a-b6e6-af16a9d150a8/weights2.png)
     
     This is what the logs of a Successulf download will look like!
     
@@ -120,7 +120,7 @@ Till now the easiest way I have found to download the weights on your machine is
 
 Size of the 7B model is 13GB (Unquantized). and running `nvidia-smi` told me that GPU memory usage is 13266MiB. Which is roughly 13.3 GB
 
-- chatgpt response to “**My GPU memory usage is 13266MiB. How tointerpret this”**
+- chatgpt response to “**My GPU memory usage is 13266MiB. How to interpret this”**
     
     The GPU memory usage of 13266MiB indicates that a portion of the memory on your graphics processing unit (GPU) is currently in use. Here's how you can interpret this information:
     
@@ -134,33 +134,17 @@ Size of the 7B model is 13GB (Unquantized). and running `nvidia-smi` told me tha
     Overall, the GPU memory usage of 13266MiB indicates that a significant portion of your GPU's memory is currently being utilized by active processes or applications.
     
 
-## Other important resources
-
-[chat gpt support](https://chat.openai.com/share/819738b5-1c35-4e1d-9fb8-31c77f09b947) 
-
-https://github.com/facebookresearch/llama/issues/149
-
-https://github.com/Lightning-AI/lit-llama/blob/main/howto/download_weights.md
-
-https://github.com/karpathy/nanoGPT
-
-https://github.com/lightning-AI/lit-llama
-
-https://github.com/Lightning-AI/lit-parrot
-
-https://transformer-circuits.pub/2021/framework/index.html
-
 # Code deep dive
 
 In the official Code repository of LLama, the first thing that I noticed was that there were only 3 important code files. (This is obviously because they havent included the training code)
 
 1. **llama/generation.py** : This file has a class which creates the pipeline for prompting (running inference) the model. This includes, sampling the top logits, custom stop function, pre and post processing of the input and output. [[code](https://github.com/facebookresearch/llama/blob/main/llama/generation.py)]
 2. **llama/tokenizer.py** : Wraps the entencepeice tokenizer in a new class. [[code](https://github.com/facebookresearch/llama/blob/main/llama/tokenizer.py)]
-3. **llama/model.py** : Holds the code for the transformer models [[code](https://github.com/facebookresearch/llama/blob/main/llama/model.py)]
+3. **llama/model.py** : Holds the code for the transformer model [[code](https://github.com/facebookresearch/llama/blob/main/llama/model.py)]
 
 Lets start with the code for the Tokenizer
 
-# Tokenizer
+## Tokenizer
 
 The job of the tokenizer is to assign an a numeric id to natural text. Which means after “tokenizing” this prompt - "I believe the meaning of life is” it will give us a tensor which looks like 
 
@@ -230,7 +214,7 @@ The BOS and EOS IDs help in marking the boundaries of sentences or sequences, wh
 - Then each word is divided into its characters and the pairwise occurence of each consecutive characters is counted. The most frequently occuring pair is added to the final corpus. In the sea of characters, wherever these 2 characters were occuring is combined into one and the process of counting the occurences of each pair is repeated and the most frequent one is added to the final Vocab.
 - Honestly, just watch [this](https://www.youtube.com/watch?v=HEikzVL-lZU) video by hugging face if you didnt understand my explaination 😟
 
-# Model
+## Model
 
 Before we dive deeper into the architecure and the working of the LLaMA transformer model,It is important to know what the model args for the 7B parameter look like:
 
@@ -295,7 +279,7 @@ Now, We can see that in the [llama/model.py](https://github.com/facebookresearch
 
 We’ll go over each of these in detail
 
-## Transformer()
+### Transformer()
 
 There are several variants of transformer language models. LLaMA is an **autoregressive, decoder-only transformer** language models, such as GPT-3. Auto regressive because this model predicts future values of a variable based on its own past values (A term taken from time series analysis). Decoder and Encoder are two parts of the transformer architecture. Encoder is used for building a good understanding of the data, whereas decoder is used for more supervised task like, next token prediction, which is what the LLaMA model does. It is one big model that predicts the next token based on the prompt (context) that we give it.
 
@@ -355,13 +339,23 @@ The Emebdding layer ( self.tok_embeddings )is simply responsible for selecting t
 
 Lets look at the positional Embeddings used in this LLaMA architecture now. 
 
-### Rotary Positional Embeddings
+**Rotary Positional Embeddings**
 
 `self.freq_cis` is a tensor (fixed and not a trainable parameter) given by the `precompute_freq_cis` function. Instead of using absolute or trainable positional encodings, LLaMA uses Rotary positional encodings, which are know to have faster convergence and better results on various sequence modelling tasks. 
 
 Rotary encoding transforms pairs of features by rotating in the 2D plane. That is, it organizes the *d* features as 2*d* pairs. Each pair can be considered a coordinate in a 2D plane, and the encoding will rotate it by an angle depending on the position of the token.
 
-For now its enough to understand that the function returns a 2D tensor of shape (2048,64) or (2*max_seq_length , params.dim // n_heads), where each element is of the form $\cos(\theta) + i \sin(\theta)$ . Here $\theta$ is given by $m/ \theta^{2n/128}$ . $m \epsilon [0,2047] , n \epsilon [0,63]$
+For now its enough to understand that the function returns a 2D tensor of shape (2048,64) or (2*max_seq_length , params.dim // n_heads), where each element is of the form
+
+$$
+\cos(\theta) + i \sin(\theta)
+$$
+
+Here $\theta$ is given by 
+
+$$
+m/ \theta^{2n/128} , m \epsilon [0,2047] , n \epsilon [0,63]
+$$
 
 - Code for generating positional embeddings
     
@@ -401,11 +395,6 @@ For better understanding refer to this annotated blog on [Rotaray Positional Emb
 
 As to how these positional embeddings are used in the attention architecture, we’ll come back to it later.
 
-mask is used to simply hide the future context. This means that for predicting the next token,the embeddings after the starting_pos should not be “visible” to the previous_tokens 
-############ 
-
-What is the use of starting pos ###################### 
-
 The embeddings for the sequence, along with it’s mask and starting position are fed to the 32 consecutive `TransformerBlock()` layers.  One thing to note here is that the input and output to the Attention layer  and the feed forward layer are always the same shape. Attention mechanism can be though of as how much more expressive you can make your sequence after each operation. Also Attention and feed forward layer are residual layers, which means that the the input to the attention layer is always added back to the output before they are collectively sent to the next attention layer. 
 
 This is call Residual or Skip Connections and are done so as to allow the gradients to flow back more easily.  [[youtube video of Karpathy](https://www.youtube.com/watch?v=kCc8FmEb1nY&t=5208s) explaining this concept]
@@ -424,7 +413,7 @@ However, it's important to note that without the full context of the previous hi
 
 Now lets dive deeper into the class `TransformerBlock()`
 
-## TransformerBlock()
+### TransformerBlock()
 
 - Complete Code
     
@@ -467,7 +456,7 @@ A few things to note here
 
 - Normalisation (**RMSNorm**) is done to the input before it enters either the attention or the feed forward layer. In the original transformer paper, it was done after the layer.
 
-## RMSNorm()
+### RMSNorm()
 
 - **Complete Code**
     
@@ -493,7 +482,7 @@ A few things to note here
 - In short it is dividing the input by its L2 Norm of the last dimension (4096)
 - The normalization is computed using a learnable parameter **`self.weight`** and the **`eps`** value to ensure numerical stability. The module helps to normalize the input data and can be useful in certain neural network architectures to improve model performance and convergence.
 
-## FeedForward()
+### FeedForward()
 
 - Complete Code
     
@@ -520,7 +509,7 @@ A few things to note here
 
 In summary, the **`FeedForward`** module applies a series of linear transformations to the input tensor **`x`** using three linear layers (**`self.w1`**, **`self.w2`**, and **`self.w3`**) with appropriate dimensions. The intermediate activation function **`F.silu`** ([Sigmoid Linear unit](https://pytorch.org/docs/stable/generated/torch.nn.functional.silu.html)) is applied element-wise to introduce non-linearity. 
 
-## Attention()
+### Attention()
 
 - Complete Code
     
@@ -575,11 +564,12 @@ In summary, the **`FeedForward`** module applies a series of linear transformati
             xq, xk, xv = self.wq(x), self.wk(x), self.wv(x)
             # all of shape (1,8,4096)
     
-            xq = xq.view(bsz, seqlen, self.n_local_heads, self.head_dim) # (1,8,32,128)
-            xk = xk.view(bsz, seqlen, self.n_local_heads, self.head_dim) # (1,8,32,128)
-            xv = xv.view(bsz, seqlen, self.n_local_heads, self.head_dim) # (1,8,32,128)
+            xq = xq.view(bsz, seqlen, self.n_local_heads, self.head_dim) # (1,8,32,128) # (1,1,32,128)
+            xk = xk.view(bsz, seqlen, self.n_local_heads, self.head_dim) # (1,8,32,128) # (1,1,32,128)
+            xv = xv.view(bsz, seqlen, self.n_local_heads, self.head_dim) # (1,8,32,128) # (1,1,32,128)
     
             xq, xk = apply_rotary_emb(xq, xk, freqs_cis=freqs_cis) # (1,8,32,128), (1,8,32,128)
+            # # (1,1,32,128), (1,1,32,128)
     
             self.cache_k = self.cache_k.to(xq) # (1,1024,32,128) moved to the same device as xq
             self.cache_v = self.cache_v.to(xq) # (1,1024,32,128) moved to the smae device as xq
@@ -589,24 +579,28 @@ In summary, the **`FeedForward`** module applies a series of linear transformati
     
             keys = self.cache_k[:bsz, : start_pos + seqlen] # (1,start_pos + seqlen,32,128) or (1,8,32,128)
             values = self.cache_v[:bsz, : start_pos + seqlen] # (1,start_pos + seqlen,32,128) or (1,8,32,128)
+            # in the next run it will be (1,9,32,128) 
     
-            xq = xq.transpose(1, 2) # (1,32,8,128)
-            keys = keys.transpose(1, 2) # (1,32,8,128)
-            values = values.transpose(1, 2) # (1,32,8,128)
+            xq = xq.transpose(1, 2) # (1,32,8,128) -> (1,32,1,128)
+            keys = keys.transpose(1, 2) # (1,32,8,128) -> (1,32,9,128)
+            values = values.transpose(1, 2) # (1,32,8,128) -> (1,32,9,128)
             scores = torch.matmul(xq, keys.transpose(2, 3)) / math.sqrt(self.head_dim) # (1,32,8,8)
             # matrix multiply of (1,32,8,128) and (1,32,128,8) resulting in # (1,32,8,8)
-    		if mask is not None:
-                scores = scores + mask  # (bs, n_local_heads, slen, cache_len + slen) # (1,32,8,8)
-            scores = F.softmax(scores.float(), dim=-1).type_as(xq) # (1,32,8,1024)
+            # matrix multiply of (1,32,1,128) and (1,32,128,9) resulting in # (1,32,1,9)
+            if mask is not None: # (1,1,8,8) -> (1,1,1,1)
+                scores = scores + mask  # (bs, n_local_heads, slen, cache_len + slen) # (1,32,8,8) -> (1,32,1,9)
+            scores = F.softmax(scores.float(), dim=-1).type_as(xq) # (1,32,8,8) -> (1,32,1,9)
             output = torch.matmul(scores, values)  # (bs, n_local_heads, slen, head_dim) # (1,32,8,128)
-    				# matrix multiply of (1,32,8,8) and (1,32,8,128) resulting in (1,32,8,128)
-            output = output.transpose(1, 2).contiguous().view(bsz, seqlen, -1) # (1,8,4096)
+    		# matrix multiply of (1,32,8,8) and (1,32,8,128) resulting in (1,32,8,128)
+            # matrix multiply of (1,32,1,9) and (1,32,9,128) resulting in (1,32,1,128)
+            output = output.transpose(1, 2).contiguous().view(bsz, seqlen, -1) # (1,8,4096) -> (1,1,4096)
     
             return self.wo(output) # (1,8,4096) x (4096,4096) -> (1,8,4096)
+            # (1,1,4096) x (4096,4096) -> (1,1,4096)
     ```
     
 
-### The Multi Head Self Attention mechanism
+**The Multi Head Self Attention mechanism**
 
 The whole point of the Self Attention operator is to generate a better representation of input sequence, that means the token/embedding a the nth position in the sequence should have condensed the knowledge of the sequence coming before it. One example for this is that the token at the nth position can be the average  or some sort weighted average of all the tokens coming before it. 
 
@@ -625,7 +619,222 @@ Multihead attention is just creating `n_head` different q,k,v vectors and lettin
 
 Other excellent resouces to understand Attention mechanism are 
 
-- [Karpathy’s NanoGPT tutorail](https://youtu.be/kCc8FmEb1nY)
+- [Karpathy’s NanoGPT tutorial](https://youtu.be/kCc8FmEb1nY)
 - [The annotated transformer](https://nlp.seas.harvard.edu/2018/04/03/attention.html)
 - [In depth transformers](https://transformer-circuits.pub/)
 - [Jay Allamar’s Illustrated Transformer](https://jalammar.github.io/illustrated-transformer/)
+
+**Caching in the attention mechanism.** 
+
+This was a concept introduce in [this](https://arxiv.org/abs/2112.05682) paper which claims that the attention mechanism does not have to be O(n^2) Operation, instead if we store the key and value vectors in a cache generated in this sequence, we wont have to compute them again when we pass in the next input of the token. 
+
+In the paper they have said
+
+> .First, we use an efficient implementation of the causal multi-head attention to reduce memory usage and runtime. This imple- mentation, available in the [xformers](https://github.com/facebookresearch/xformers) library,2 is inspired by [Rabe and Staats (2021)](https://arxiv.org/abs/2112.05682) and uses the backward from Dao et al. (2022). This is achieved by not storing the attention weights and not com- puting the key/query scores that are masked due to the causal nature of the language modeling task.
+> 
+
+As you can see here also with these lines we simply query the cache to get the keys and values from the past. 
+
+```python
+keys = self.cache_k[:bsz, : start_pos + seqlen] # (1,start_pos + seqlen,32,128) or (1,8,32,128)
+values = self.cache_v[:bsz, : start_pos + seqlen] # (1,start_pos + seqlen,32,128) or (1,8,32,128)
+# in the next run it will be (1,9,32,128)
+```
+
+**Masking in attention mechanism.** 
+
+During each forward run, if the seq_length passed in is more than 1, a mask is generated which is a tensor of shape (1,1,seq_length,seq_length). In this tensor the upper triangle is filled with `-inf` and the lower traingle is filled with zero’s. Then when the weight matrix is calculated (by multiplying keys and query’s) this mask is added to the weight matrix. In this way the upper traingle of the weight matrix also becomes zero. Then when we take the softmax of this weight matrix, the `-inf` will convert to zeros and the rest of the values will be converted to probability values. 
+
+This is done because we do not want the token at the nth position to contain information from the tokens ahead of itself.  For predicting the next token,the embeddings after the starting_pos should not be “visible” to the previous_tokens . This mathematical trick is explained clearly here in [Karpathy’s tutorial](https://www.youtube.com/watch?v=kCc8FmEb1nY&t=2533s) on GPT. 
+
+**Use of Rotary positional embeddings**
+
+```python
+def apply_rotary_emb(
+    xq: torch.Tensor, # (1,8,32,128)
+    xk: torch.Tensor, # (1,8,32,128)
+    freqs_cis: torch.Tensor, # (8,64)
+) -> Tuple[torch.Tensor, torch.Tensor]:
+    xq_ = torch.view_as_complex(xq.float().reshape(*xq.shape[:-1], -1, 2)) # (1,8,32,128) -> (1,8,32,64,2) -> (1,8,32,64)
+    xk_ = torch.view_as_complex(xk.float().reshape(*xk.shape[:-1], -1, 2)) # (1,8,32,128) -> (1,8,32,64,2) -> (1,8,32,64)
+    freqs_cis = reshape_for_broadcast(freqs_cis, xq_) # (1,8,1,64)
+    # Element-wise multiplication of 2 matrices which has complex numbers
+    xq_out = torch.view_as_real(xq_ * freqs_cis).flatten(3) # (1,8,32,64,2) -> (1,8,32,128) 
+    xk_out = torch.view_as_real(xk_ * freqs_cis).flatten(3) # (1,8,32,64,2) -> (1,8,32,128)
+    return xq_out.type_as(xq), xk_out.type_as(xk) # (1,8,32,128), (1,8,32,128)
+```
+
+As we know that the positional embeddings are tensors of complex number of the form cos(theta) + i sin(theta). Here we first convert the query and key vectors into their complex forms by reshaping them, and then element wise multiplication with the postional embeddings is done. Then these complex numbered tensor is again converted to their real form and returned. 
+
+## Generation
+
+At the crux of the [generate.py](http://generate.py) is this logic
+
+```python
+bsz = len(prompts) # 1
+params = self.model.params # those same ModelArgs
+assert bsz <= params.max_batch_size, (bsz, params.max_batch_size)
+
+prompt_tokens = [self.tokenizer.encode(x, bos=True, eos=False) for x in prompts]
+# [[1, 306, 4658, 278, 6593, 310, 2834, 338]]
+
+min_prompt_size = min([len(t) for t in prompt_tokens]) # 8
+max_prompt_size = max([len(t) for t in prompt_tokens]) # 8
+
+total_len = min(params.max_seq_len, max_gen_len + max_prompt_size) # 264
+
+tokens = torch.full((bsz, total_len), self.tokenizer.pad_id).cuda().long()
+# a tensor of size (1, 264) filled with -1's
+
+for k, t in enumerate(prompt_tokens):
+    tokens[k, : len(t)] = torch.tensor(t).long()
+    # fill the first 8(length of prompt_tokens[0]) tokens of tokens with the prompt tokens
+input_text_mask = tokens != self.tokenizer.pad_id # a tensor of size (1, 264) filled with True's ,
+# where tokens is not -1, other wise False
+start_pos = min_prompt_size # 8
+prev_pos = 0
+for cur_pos in range(start_pos, total_len):
+    i = tokens[:, prev_pos:cur_pos]
+    logits = self.model(i, prev_pos)
+    if temperature > 0:
+        probs = torch.softmax(logits / temperature, dim=-1)
+        next_token = sample_top_p(probs, top_p)
+    else:
+        next_token = torch.argmax(logits, dim=-1)
+    next_token = next_token.reshape(-1)
+    # only replace token if prompt has already been generated
+    next_token = torch.where(
+        input_text_mask[:, cur_pos], tokens[:, cur_pos], next_token
+    )
+    tokens[:, cur_pos] = next_token
+    prev_pos = cur_pos
+    
+    if self._should_stop(tokens, prompt_tokens, stop_ids, stop_words):
+        break
+```
+
+`prompts` as a list of strings will be given to the `generate` function. For now let the prompt be “**I believe the meaning of life is**” . `prompt_tokens are generated through the tokenizer's encode function and the minimum and the maximum prompt size in the entire list of strngs are calculated. For now both of those will be `8` 
+
+Maximum sequence length that can be passed to the transformer is `1024` (A fixed predecided hyper parameter. This is also called the context length. Recent advances have led to the maximum context length becoming 100k as well). Also we do not want the output to be more than 256 tokens. (Again a predetermined fixed hyper parameter) 
+
+Considering these 2 factors in mind the total length that will be generated is calculated by taking minumum of `1024` and `256 + prompt_length`  . Here this will be `264`
+
+A tensor where the intial few values are our original `prompt_tokens` and the rest are filled with `pad_id (-1)` is created. Correspondingly a `input_mask` of size (1, 264) filled with True's , where tokens is not -1, other wise False. In the future only where the mask is -1 will be replaced with generated tokens. 
+
+Then we run a loop which iterates over the tokens is made to run. In the first pass, the entire prompt is fed in to the model, with starting_pos as 0. From the next iteration onwards only one token will be sent for forward pass to the model. This can be validated by checking the difference between the `prev_pos` and `cur_pos` . After the first iteration, the difference will always be 1. 
+
+<aside>
+💡 Note that starting position is passed in to the transformer because that is used later in the caching in the self attention mechanism. And, after the first iteration as the sequence lenght will always be 1, there is no need for an attention mask.
+
+</aside>
+
+As we know already, no matter the input size, the output will always be the logits of shape (1,32_000). Softmax is applied on them to convert them into probabilites and finally, one token is sampled out of the logits (considering it a multinomial distribution). As a new token is generated, it is added to the `tokens` variable depending on the input mask, untill the tensor of shape 264 is completely filled. The loop might break in between if the model generates a token or a word that should not have been generated. `_should_stop()` takes care of this.  
+
+After this, post processing is done on the decoded tokens so that the output is more presentable and readable to the User . Lets look at 3 very important concepts here - **Temparature** and **Sampling from the top probabilites** and the **post processing function**
+
+**The role of temparature** 
+
+The temperature determines how greedy the generative model is.
+
+If the temperature is low, the probabilities to sample other but the class with the highest log probability will be small, and the model will probably output the most correct text, but rather boring, with small variation.
+
+If the temperature is high, the model can output, with rather high probability, other words than those with the highest probability. The generated text will be more diverse, but there is a higher possibility of grammar mistakes and generation of nonsense.
+
+![Untitled](https://o.remove.bg/uploads/96e8b1d2-4630-4fb3-96ee-c5c25130aa7d/temparature.png)
+
+The difference between the low-temperature case (left) and the high-temperature (right) case for the categorical distribution is illustrated in the picture above, where the heights of the bars correspond to probabilities.
+
+**Sampling from top p probabilites**
+
+```python
+def sample_top_p(probs, # a tensor of size (1, 32_000) with softmax already applied
+                 p # 0.95
+                 ):
+    """ 
+    In summary, the sample_top_p function performs top-p sampling on a given probability
+    distribution. It sorts the probabilities, computes the cumulative sum, applies a 
+    threshold to remove tokens with cumulative probabilities exceeding the threshold, 
+    normalizes the probabilities, samples a token using multinomial sampling, and returns 
+    the sampled token index.
+
+    If the sum of probalities coming before a token is greater than p, then the token is
+    not considered for sampling. This is done by setting the probability of the token to 0.
+    """
+    probs_sort, probs_idx = torch.sort(probs, dim=-1, descending=True)
+    probs_sum = torch.cumsum(probs_sort, dim=-1)
+    mask = probs_sum - probs_sort > p
+    probs_sort[mask] = 0.0
+    probs_sort.div_(probs_sort.sum(dim=-1, keepdim=True))
+    next_token = torch.multinomial(probs_sort, num_samples=1)
+    next_token = torch.gather(probs_idx, -1, next_token)
+    return next_token
+```
+
+The `sample_top_p` function is used to perform top-p sampling on a probability distribution. It takes two inputs:
+
+1. `probs`: A tensor of size `(1, 32_000)` representing a probability distribution over 32,000 tokens. The softmax function has already been applied to convert the logits into probabilities.
+2. `p`: A float representing the threshold probability. Tokens with cumulative probabilities above this threshold will be considered for sampling.
+
+Here's a step-by-step explanation of the function:
+
+1. `probs_sort, probs_idx = torch.sort(probs, dim=-1, descending=True)`: The `probs` tensor is sorted in descending order along the last dimension (`dim=-1`). This sorts the probabilities from highest to lowest. `probs_sort` contains the sorted probabilities, and `probs_idx` contains the corresponding indices.
+2. `probs_sum = torch.cumsum(probs_sort, dim=-1)`: The cumulative sum of the sorted probabilities is computed along the last dimension using `torch.cumsum()`. This results in a tensor `probs_sum` where each element represents the cumulative sum of probabilities up to that point.
+3. `mask = probs_sum - probs_sort > p`: A boolean mask is created by comparing the difference between `probs_sum` and `probs_sort` with the threshold `p`. The mask will be `True` for tokens whose cumulative probability exceeds the threshold `p`.
+4. `probs_sort[mask] = 0.0`: The probabilities corresponding to the tokens that exceed the threshold are set to `0.0`. This effectively removes those tokens from consideration during sampling.
+5. `probs_sort.div_(probs_sort.sum(dim=-1, keepdim=True))`: The `probs_sort` tensor is divided by its sum along the last dimension (`dim=-1`). This normalizes the probabilities so that they sum up to 1, ensuring they form a valid probability distribution.
+6. `next_token = torch.multinomial(probs_sort, num_samples=1)`: Using `torch.multinomial()`, a single token is sampled from the probability distribution defined by `probs_sort`. The `num_samples` parameter is set to `1`, indicating that only one token is sampled. 
+    
+    Multinomial sampling is a method used to randomly draw samples from a categorical distribution. In the context of probability distributions, a categorical distribution represents a discrete probability distribution over a finite set of categories or outcomes.
+    
+    When using multinomial sampling, you have a categorical distribution defined by a set of probabilities assigned to each category. The probabilities sum up to 1, representing the likelihood of each category being chosen. Multinomial sampling allows you to randomly select one or more categories based on their probabilities.
+    
+    Here's how multinomial sampling works in PyTorch:
+    
+    1. You provide a tensor containing the probabilities of each category. This tensor should have the shape **`(batch_size, num_categories)`**.
+    2. Specify the **`num_samples`** parameter, which determines how many samples you want to draw for each category.
+    3. PyTorch uses the probabilities to sample randomly from the categorical distribution. The number of samples drawn for each category follows a multinomial distribution, which is determined by the probabilities.
+    4. The output of multinomial sampling is a tensor containing the indices of the sampled categories. The shape of this tensor is **`(batch_size, num_samples)`**.
+    
+    By using multinomial sampling, you can randomly select categories according to their probabilities. This technique is commonly used in various applications, including generating text, image captioning, and reinforcement learning, where random exploration is necessary.
+    
+7. `next_token = torch.gather(probs_idx, -1, next_token)`: The sampled token index is obtained by using `torch.gather()` to gather the corresponding index from `probs_idx`. This ensures that the sampled token index matches the original indexing of the input tensor.
+8. `return next_token`: The sampled token index is returned as the output of the function.
+
+In summary, the `sample_top_p` function performs top-p sampling on a given probability distribution. It sorts the probabilities, computes the cumulative sum, applies a threshold to remove tokens with cumulative probabilities exceeding the threshold, normalizes the probabilities, samples a token using multinomial sampling, and returns the sampled token index.
+
+**Post Processing function** 
+
+```python
+def postprocessing(output_text, stop_words=None, threshold=10):
+    
+    sentences = output_text.split(".")
+    filtered_sentences = []
+    for sentence in sentences:
+        sentence = sentence.strip()
+        if len(sentence) > threshold and sentence[-1] == ".":
+            filtered_sentences.append(sentence)
+    r = '.'.join(sentences).strip()
+    if stop_words:
+        for w in stop_words:
+            if r.endswith(w):
+                r = r[0:-len(w)].strip()
+    if r[-1] != '.':
+        r += '...'
+    return r
+```
+
+The **`postprocessing`** function takes an **`output_text`** string and performs some post-processing steps to clean and format the text. Let's break down the function step by step:
+
+1. Splitting into sentences: The **`output_text`** string is split into sentences using the period (".") as the delimiter. This is done with the **`split()`** method, which returns a list of individual sentences.
+2. Filtering sentences: Each sentence is processed individually in a loop. First, any leading or trailing whitespace is removed by using the **`strip()`** method. Then, the length of the sentence is checked against the **`threshold`** value. If the sentence is longer than the threshold and ends with a period (indicating a complete sentence), it is considered valid and added to the **`filtered_sentences`** list.
+3. Joining filtered sentences: The **`filtered_sentences`** list is joined back into a single string using the period as the separator. This step is performed with the **`join()`** method, resulting in a string that contains only the valid sentences.
+4. Handling stop words: If the **`stop_words`** parameter is provided, the function checks if the resulting string **`r`** ends with any of the stop words. If a stop word is found at the end of the string, it is removed by slicing the string from the beginning up to the length of the stop word. The resulting string is then stripped of any leading or trailing whitespace.
+5. Ensuring sentence ending: Finally, the function checks if the resulting string **`r`** ends with a period. If it doesn't, a period and ellipsis ("...") are appended to the string.
+
+The purpose of this post-processing function is to clean up the generated text and ensure that it contains valid and properly formatted sentences. It also provides the flexibility to handle specific cases such as removing stop words and enforcing proper sentence endings.
+
+# Conclusion
+
+Thats it!! I know this was a long blog. We looked at why the LLaMA models are relevant in today’s world, we dived deep into the tokenizer it uses, what architectural changes it included in the classic transformer models and what is the mechanism behind generating a new token. If stuck somewhere considering having a look at my [fork](https://github.com/nishantb06/pyllama) of Pyllama package. The code here is heavily commented and I’m sure this will help. Please reach out on twitter [@itsnishant14](https://twitter.com/itsnishant14) incase of any questions or discrepancies. 
+
+Thanks for giving this a read :)
