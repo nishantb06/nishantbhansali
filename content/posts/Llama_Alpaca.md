@@ -13,6 +13,7 @@ One of the most brilliant and well-explained articles I have read is [The Annot
 I have tried to do something similar with the LLaMA models by Meta Research, without which the commercial use of many Large Language models would not have been possible. 
 
 [arXiv](https://arxiv.org/abs/2302.13971v1) , [Official Code](https://github.com/facebookresearch/llama)
+![llama](https://images.unsplash.com/photo-1589182337358-2cb63099350c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800)
 
 # Introduction
 
