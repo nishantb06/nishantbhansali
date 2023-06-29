@@ -59,7 +59,7 @@ in compute, you should make your model 3.1x times bigger and the data you train 
 
 These datasets were used for Pretraining of the model, Note that Wikipedia and Books dataset were used in approximately 2 epochs, while other dataset had only 1 epochs. Overall this datasets is of 4.3 TB!!
 
-In short they have trained a large transformer on a large quantity of daya using standard optimizer (AdamW).
+In short they have trained a large transformer on a large quantity of data using standard optimizer (AdamW).
 
 ## Architecture
 
