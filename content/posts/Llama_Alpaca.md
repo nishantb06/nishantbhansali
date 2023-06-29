@@ -55,7 +55,7 @@ in compute, you should make your model 3.1x times bigger and the data you train 
 
 ## Datasets Used
 
-![Datasets used](https://o.remove.bg/uploads/9c7ebf59-2220-46e8-a396-9f03c3cd0fe7/datasets.png)
+![Datasets used](https://i.imgur.com/DhWpc17.png)
 
 These datasets were used for Pretraining of the model, Note that Wikipedia and Books dataset were used in approximately 2 epochs, while other dataset had only 1 epochs. Overall this datasets is of 4.3 TB!!
 
@@ -109,11 +109,11 @@ Till now the easiest way I have found to download the weights on your machine is
     
 4. After successful download the directory will have the following structure 
     
-    ![Note that the size of this folder is **13 GB** !!!](https://o.remove.bg/uploads/934d3409-6584-4f4f-a046-60e2af34e57f/weights1.png)
+    ![Note that the size of this folder is **13 GB** !!!](https://i.imgur.com/LsIuE3c.png)
     
     Note that the size of this folder is **13 GB** !!!
     
-    ![This is what the logs of a Successulf download will look like!](https://o.remove.bg/uploads/f074333a-a784-447a-b6e6-af16a9d150a8/weights2.png)
+    ![This is what the logs of a Successulf download will look like!](https://i.imgur.com/YnhC8gG.png)
     
     This is what the logs of a Successulf download will look like!
     
@@ -347,16 +347,10 @@ Lets look at the positional Embeddings used in this LLaMA architecture now.
 Rotary encoding transforms pairs of features by rotating in the 2D plane. That is, it organizes the *d* features as 2*d* pairs. Each pair can be considered a coordinate in a 2D plane, and the encoding will rotate it by an angle depending on the position of the token.
 
 For now its enough to understand that the function returns a 2D tensor of shape (2048,64) or (2*max_seq_length , params.dim // n_heads), where each element is of the form
+![iota3](https://i.imgur.com/tPHF68t.png)
+Here `theta` is given by 
 
-$$
-\cos(\theta) + i \sin(\theta)
-$$
-
-Here $\theta$ is given by 
-
-$$
-m/ \theta^{2n/128} , m \epsilon [0,2047] , n \epsilon [0,63]
-$$
+![iota2](https://i.imgur.com/6RifwFd.png)
 
 - Code for generating positional embeddings
     
@@ -741,7 +735,7 @@ If the temperature is low, the probabilities to sample other but the class with 
 
 If the temperature is high, the model can output, with rather high probability, other words than those with the highest probability. The generated text will be more diverse, but there is a higher possibility of grammar mistakes and generation of nonsense.
 
-![Untitled](https://o.remove.bg/uploads/96e8b1d2-4630-4fb3-96ee-c5c25130aa7d/temparature.png)
+![temparature](https://i.imgur.com/HCS0swK.png)
 
 The difference between the low-temperature case (left) and the high-temperature (right) case for the categorical distribution is illustrated in the picture above, where the heights of the bars correspond to probabilities.
 
